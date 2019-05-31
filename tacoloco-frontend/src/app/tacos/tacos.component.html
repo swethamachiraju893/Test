@@ -1,0 +1,27 @@
+<h2>Tacos</h2>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Taco Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let taco of tacos;let index = index;">
+      <th scope="row">{{taco.id}}</th>
+      <td>{{taco.tacoName}}</td>
+      <td>{{taco.price}}</td>
+      <td class="add">
+        <select [(ngModel)]="count[index]" (ngModelChange)="onQuantityChange($event,taco.price)">
+          <option *ngFor="let quantity of quantities" [ngValue]="quantity">{{quantity}}</option>
+        </select>
+        <!-- <fa (click)="onClickCount(index,taco.price)" name="plus-square"></fa> -->
+      </td>  
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-primary" (click)="orderTacos()">Submit Order</button>
+
+                                    
